@@ -1,0 +1,120 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Ferreteria</title>
+  </head>
+  <body>
+      <header class='shadow mt-4 bg-primary rounded-3 position-relative d-flex text-light  container mt-1' style=' height: 460px   ' >
+
+        <div class="start-0  rounded-3 position-absolute   w-50 text-center  top-50" 
+        style='height: 230px; width: 100px; ' >
+          <h1 class='mt-5 p-5  text text'>Bienvenidos a <strong>AXCOM</strong> </h1>
+        </div>
+
+        <div class=' position-absolute  end-0 shadow d-block rounded-bottom  bg-white justify-content-center    text-center'
+        style='width: 25rem; height: 78px;' >
+
+          <ul class=' container w-100  m-1 d-flex '>
+              <a class=' me-1 w-25 btn-outline-primary  bg-white btn mt-3  text-dark' href='{% url 'app:faq' %}'>
+                FAQ
+              </a>
+              <a class=' me-1 w-25 btn-outline-primary bg-white btn mt-3  text-dark' href='{% url 'app:blog' %}'>
+                Blog
+                </a>
+              <a class='me-1  w-25  btn-outline-primary bg-white btn mt-3  text-dark' href='{% url 'app:tours' %}'>
+                Tours
+                </a>
+                <!-- Example single danger button -->
+                  <div class="btn-group me-2">
+                    <button type="button" class="btn btn-white  mt-3 btn-outline-primary  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                      Mas
+                    </button>
+                    <ul class="dropdown-menu shadow mt-4  text-center me-5">
+                      <li><a class="dropdown-item" href='{% url 'app:perfil' %}'>Perfil</a></li>
+                      
+                      {% comment %} <li><a class="dropdown-item" href="#">Iniciar session</a></li>
+                      <li><a class="dropdown-item" href="#">Registrate</a></li> {% endcomment %}
+                      {% comment %} <li><hr class="dropdown-divider"></li> {% endcomment %}
+                      <li><a class="dropdown-item text-danger" href="{% url 'app:login' %} ">Cerrar</a></li>
+                    </ul>
+                  </div>
+               {% comment %} <a class=' me-1 w-25  bg-white btn mt-3  text-dark' href='{% url 'app:login' %}'>
+                Perfil
+                </a>0 {% endcomment %}
+              </a>
+          </ul>
+        </div>
+      </header>
+
+
+
+      {% comment %} 
+        Main
+      {% endcomment %}
+
+
+
+      <main class='   rounded-3 mt-5 mb-5'>
+
+      <section class=' bg-white  rounded-3 p-2 justify-content-center d-flex flex-wrap' id='tours_box'>
+
+            {% comment %} 
+            1
+            {% endcomment %}
+
+            {% for tour in tours %}
+            <form action="{% url 'app:get_tours' 'paquete' %}" method="get">
+             
+              <div class='rounded-3 shadow  p-1 bg-white me-3 mt-3' style='width: 29rem;' >
+                <div class='w-100 container text-center'>
+                  <img src="{% static '/app/img/pinos.jpg' %}" class='rounded-3' width='430px' height='360px' alt="No">
+                </div>
+                <div>
+
+                  <div class=' w-75 mt-1 container d-flex flex-wrap position-relative p-1 bg-white rounded-3'>
+                    <h6>{{ tour.dia }}</h6>
+                    <h6 class='position-absolute end-0 n  '  >{{ tour.price }}</h6>
+                  </div>
+                  
+                  <p class='p-1 text-center'>{{ tour.description }}</p>
+
+                  <div class='container w-50'>
+                      <button class='btn  btn-outline-primary'>Reservar</button>
+                      <a class='btn  btn-outline-primary' href='{% url 'app:get_tours' 'tour.id' %}'>Comprar</a>
+                  </div>
+                
+                </div>
+              
+          </div>
+            </form>
+            {% endfor %}
+    </section>
+
+      </main>
+
+
+
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

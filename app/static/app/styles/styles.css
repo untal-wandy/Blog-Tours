@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Laila:wght@300;400;500;600;700&display=swap');
+
+
+
+:root
+{
+/* Baground-color principal */
+      --bg-black-pro: #000000,
+      --bg-white-pro: #FFFFFF,
+      --bg-grey-pro: #B0B0B0,
+      --bg-blue-paypal: #3184FF,
+
+/* Styles of views components */
+
+      --rounded-31px: 31px;
+      --font-family:"Laila";
+      --blur: filter(blur(20));
+      
+}
+
+
+*
+{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+
+}
