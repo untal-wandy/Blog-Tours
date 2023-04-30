@@ -26,6 +26,10 @@
         {% for user in user %}
           <div class='shadow rounded-3 w-75 p-1 '> 
               <div>
+                <div class='rounded-circle p-1'>
+                  <img src=" {{user.photo.url}} " class='rounded-circle' style='width: 180px;' alt="Imagen no proporcionada">
+
+                </div>
                 <h3>{{user.first_name}}</h3>
                 <hr>
                 <h6>{{user.username}}</h6>

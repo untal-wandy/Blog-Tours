@@ -11,6 +11,7 @@ class User(AbstractUser):
       instagram = models.CharField(max_length=100, blank=True)
       facebook = models.CharField(max_length=100, blank=True)
       gmail = models.CharField(max_length=100, blank=True)
+      photo = models.ImageField(upload_to="", blank=True, null=True)
 
 
 
@@ -48,3 +49,20 @@ class Box_tours(models.Model):
             return self.name_tour
       
 
+class Get_buy_tours(models.Model):
+      box_tours = models.ForeignKey(Box_tours, on_delete=models.CASCADE)
+      number_get_buy = models.IntegerField(default=0, blank=True)      
+
+      def __str__(self) -> int:
+            return str(self.number_get_buy)
+      
+
+
+class Blog(models.Model):
+      title = models.CharField(max_length=100)
+      description = models.CharField(max_length=500)
+      photo = models.ImageField(upload_to="", blank=True, null=True)
+      date = models.DateTimeField(auto_now_add=True)
+
+      def __str__(self) -> str:
+            return self.title

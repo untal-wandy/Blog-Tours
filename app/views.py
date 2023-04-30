@@ -55,16 +55,27 @@ def login(request):
 
 
 @login_required
-def get_tours(request,paquete):
-        # En esta vista obtengo el box_tours y el usuario que la adquiere
+def get_tours(request, paquete):
+        
+        
     box_tours = Box_tours.objects.filter(id=paquete)
     user_get_paquet = User.objects.get(id=request.user.id)
     tours = Box_tours.objects.filter(id=paquete) 
     save = User.objects.get(id=request.user.id)
+
+
     if request.method == 'POST':
+        get_buy_tours =  Box_tours.objects.filter(id=paquete) 
+        for buy in get_buy_tours:
+                buys = buy.get_buy_tours_set.create(number_get_buy=1)
+                print(buys)
+
+           
+
         for tour in tours:
                 get_paquet = save.tour_user_model_set.create(name=tour.name_tour, number_id_tour=paquete)
-                print(get_paquet)
+
+
 
                 messeje_get_buy = 'Adquerido su Tour', tour.name_tour
                 print(messeje_get_buy)
@@ -78,7 +89,9 @@ def get_tours(request,paquete):
 
 
 def blog(request):
-    return render(request, 'app/blog.html')
+    post = Blog.objects.all()
+
+    return render(request, 'app/blog.html', {'post': post})
 
 
 
@@ -116,7 +129,15 @@ def perfil(request):
         tours_getting = user_registrado.tour_user_model_set.all()
 
         print(request.user.id, user_registrado)
-   
+
+        # from django.core.mail import send_mail
+
+        # send_mail(
+        #     "Subject here",
+        #     "Here is the message.",
+        #     "wandy.oli@icloud.com",
+        #     ["wandy.oli@icloud.com"],
+        #     fail_silently=False,)
         
 
     else:
