@@ -42,7 +42,7 @@ class Box_tours(models.Model):
       buy_getting = models.IntegerField(default=0, blank=True)
       reserved_getting = models.IntegerField(default=0, blank=True)
 
-      cupos = models.CharField(max_length=100, blank=True)
+      asientos = models.IntegerField(default=0, blank=True)
       limites = models.CharField(max_length=100, blank=True)
 
       def __str__(self) -> str:
@@ -66,3 +66,8 @@ class Blog(models.Model):
 
       def __str__(self) -> str:
             return self.title
+      
+
+class Faq(models.Model):
+      question = models.CharField(max_length=100)
+      answer = models.CharField(max_length=500)

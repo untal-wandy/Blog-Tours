@@ -63,27 +63,31 @@ def get_tours(request, paquete):
     tours = Box_tours.objects.filter(id=paquete) 
     save = User.objects.get(id=request.user.id)
 
-
     if request.method == 'POST':
-        get_buy_tours =  Box_tours.objects.filter(id=paquete) 
-        for buy in get_buy_tours:
-                buys = buy.get_buy_tours_set.create(number_get_buy=1)
-                print(buys)
+        asientos = request.POST.get("asientos")
+        if asientos is not None:
+                listo = int(asientos)
+                number_asientos = int
 
-           
+                delete_a_asientos = Box_tours.objects.filter(id=paquete)
 
-        for tour in tours:
-                get_paquet = save.tour_user_model_set.create(name=tour.name_tour, number_id_tour=paquete)
+                for asientos in delete_a_asientos:
+                        number_asientos =  asientos.asientos
+                        complet = number_asientos - listo
+                        asientos.asientos = complet
+                        asientos.save()
 
 
+                get_buy_tours =  Box_tours.objects.filter(id=paquete) 
+                for buy in get_buy_tours:
+                        buys = buy.get_buy_tours_set.create(number_get_buy=1)
+                        print(buys)
 
-                messeje_get_buy = 'Adquerido su Tour', tour.name_tour
-                print(messeje_get_buy)
-            
-
+                for tour in tours:
+                        get_paquet = save.tour_user_model_set.create(name=tour.name_tour, number_id_tour=paquete)
+                        messeje_get_buy = 'Adquerido su Tour', tour.name_tour
+                        print(messeje_get_buy)
     return render(request, 'app/get_tours.html',  {'box_tours': box_tours})
-
-
 
 
 
@@ -96,10 +100,9 @@ def blog(request):
 
 
 
-
-
 def faq(request):
-    return render(request, 'app/faq.html')
+    faq = Faq.objects.all()
+    return render(request, 'app/faq.html', {'faq': faq})
 
 
 
