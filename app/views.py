@@ -70,23 +70,31 @@ def get_tours(request, paquete):
                 number_asientos = int
 
                 delete_a_asientos = Box_tours.objects.filter(id=paquete)
-
                 for asientos in delete_a_asientos:
-                        number_asientos =  asientos.asientos
-                        complet = number_asientos - listo
-                        asientos.asientos = complet
+                    number_asientos =  asientos.asientos
+                    print(number_asientos)
+
+                if number_asientos <= 0:
+                    for asientos in delete_a_asientos:
+                        asientos.asientos = 0
                         asientos.save()
+                else:
+                    for asientos in delete_a_asientos:
+                     asientos.asientos = number_asientos -listo
+                    asientos.save()
+                        # else:
+                        #      print('es igual a 0')
 
 
                 get_buy_tours =  Box_tours.objects.filter(id=paquete) 
                 for buy in get_buy_tours:
                         buys = buy.get_buy_tours_set.create(number_get_buy=1)
-                        print(buys)
+                        # print(buys)
 
                 for tour in tours:
                         get_paquet = save.tour_user_model_set.create(name=tour.name_tour, number_id_tour=paquete)
                         messeje_get_buy = 'Adquerido su Tour', tour.name_tour
-                        print(messeje_get_buy)
+                        # print(messeje_get_buy)
     return render(request, 'app/get_tours.html',  {'box_tours': box_tours})
 
 
