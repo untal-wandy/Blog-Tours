@@ -36,17 +36,26 @@ class Box_tours(models.Model):
 
       price = models.CharField(max_length=10)
       description = models.CharField(max_length=500)
+      
       dia = models.CharField(max_length=100, default=False)
+      limites = models.CharField(max_length=100, blank=True)
 
       photo = models.ImageField(upload_to="", blank=True, null=True)
+      photo1_s = models.ImageField(upload_to="", blank=True, null=True)
+      photo2_s = models.ImageField(upload_to="", blank=True, null=True)
+      photo3_s = models.ImageField(upload_to='', blank=True, null=True)
+      photo4_s =models.ImageField(upload_to='', blank=True, null=True)
+
       buy_getting = models.IntegerField(default=0, blank=True)
       reserved_getting = models.IntegerField(default=0, blank=True)
 
       asientos = models.IntegerField(default=0, blank=True)
-      limites = models.CharField(max_length=100, blank=True)
 
       def __str__(self) -> str:
             return self.name_tour
+      
+
+
       
 
 class Get_buy_tours(models.Model):

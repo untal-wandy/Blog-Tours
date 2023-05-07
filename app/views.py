@@ -62,8 +62,9 @@ def get_tours(request, paquete):
     user_get_paquet = User.objects.get(id=request.user.id)
     tours = Box_tours.objects.filter(id=paquete) 
     save = User.objects.get(id=request.user.id)
-
+    print('no for')
     if request.method == 'POST':
+        print('if post request')
         asientos = request.POST.get("asientos")
         if asientos is not None:
                 listo = int(asientos)
@@ -94,7 +95,7 @@ def get_tours(request, paquete):
                 for tour in tours:
                         get_paquet = save.tour_user_model_set.create(name=tour.name_tour, number_id_tour=paquete)
                         messeje_get_buy = 'Adquerido su Tour', tour.name_tour
-                        # print(messeje_get_buy)
+                        print(messeje_get_buy)
     return render(request, 'app/get_tours.html',  {'box_tours': box_tours})
 
 
@@ -161,12 +162,57 @@ def perfil(request):
 
 
 
-
-
-
-
-
+# Admin Site Views
 
 @login_required
 def admin_site(request):
-    return render(request, 'app/admin_site.html')
+    return render(request, 'app/admin_site/admin_site.html')
+
+
+# Esta vista cra los BOX_Tours 
+def paque_tour(request):
+
+    box_tours = Box_tours.objects.all()
+
+    if request.method == 'POST':
+   
+        box_toura_add = Box_tours()
+        box_toura_add.name_tour  = request.POST.get("name")
+        print(box_toura_add.name_tour)
+        box_toura_add.asientos = request.POST.get('asientos')
+        box_toura_add.description = request.POST.get('description')
+        box_toura_add.code_paquet = request.POST.get('codepaquet')
+        box_toura_add.price = request.POST.get('price')
+        box_toura_add.dia = request.POST.get('fecha')
+        box_toura_add.limites = request.POST.get('fechalimite')
+        box_toura_add.value_cu = request.POST.get('valuecu')
+        box_toura_add.photo = request.POST.get('img')
+        box_toura_add.photo1_s  = request.POST.get('img1')
+        box_toura_add.photo2_s  = request.POST.get('img2')
+        box_toura_add.photo3_s  = request.POST.get('img3')
+        box_toura_add.photo4_s  = request.POST.get('img4')
+        box_toura_add.save()
+
+
+
+    return render(request, 'app/admin_site/paque_tour.html', {'box_tours': box_tours})
+
+
+
+# Esta vista eliminna los Box_Tours lo que son los paquetes de viajas
+def delete_tours(request, paquet_tour_id):
+    paque_delete = paquet_tour_id
+    box_tours = Box_tours.objects.filter(id=paque_delete)
+    if request.method == 'POST':
+            
+        box_tours.delete()
+        return redirect('/paque_tour/')
+
+    print('elimando paquete numero:', paque_delete)
+    return render(request, 'app/admin_site/delete_tours.html',
+                   {'box_tours': box_tours,})
+
+
+# Esta vista crea los post o blogs
+def blog_site(request):
+    return render(request, 'apps/admin_site/blog_site.html')

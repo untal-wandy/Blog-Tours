@@ -85,8 +85,8 @@
               <p class='p-1 text-center'>{{ tour.description }}</p>
 
               <div class='container w-50'>
-                  <button class='btn  btn-outline-primary'>Reservar</button>
-                  <a href="{% url 'app:get_tours' tour.id %}">Comprar</a>
+                  {% comment %} <button class='btn  btn-outline-primary'>Reservar</button> {% endcomment %}
+                  <a href="{% url 'app:get_tours' tour.id %}" class='text-decoration-none'>Detalles</a>
               </div>
             
             </div>
