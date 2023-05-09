@@ -127,9 +127,18 @@ AUTH_USER_MODEL = 'app.User'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.googlegmail.com'
-EMAIL_PORT = 587
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USER = 'olivares.wan@gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_HOTS_PASSWORD = 'zzungynhrmdxjzuz'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOTS_PASSWORD = 'qwzxyxddkelsrnbv'
+EMAIL_PORT = '587'
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'localhost'
+# EMAIL_PORT = 1025
+
+# EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+# EMAIL_HOST_USER = 'fab24b31d24dff'
+# EMAIL_HOST_PASSWORD = '33f910a5d6b092'
+# EMAIL_PORT = '2525'
+
