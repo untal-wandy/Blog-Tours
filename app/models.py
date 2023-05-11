@@ -8,7 +8,7 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
       paypal = models.CharField(max_length=100, blank=True)
       transferencia = models.CharField(max_length=100, blank=True)
-      instagram = models.CharField(max_length=100, blank=True)
+      g = models.CharField(max_length=100, blank=True)
       facebook = models.CharField(max_length=100, blank=True)
       gmail = models.CharField(max_length=100, blank=True)
       photo = models.ImageField(upload_to="", blank=True, null=True)
