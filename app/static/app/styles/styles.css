@@ -19,10 +19,215 @@
 }
 
 
+
 *
 {
       padding: 0;
       margin: 0;
       box-sizing: border-box;
+      font-family: 'Laila';
+}
 
+
+#section-img-blur
+{
+      display: flex;
+      margin-top: 2px;
+      justify-content: center;
+      overflow: hidden;
+      /* background-color: aqua  ; */
+      padding: 0;
+      height: 40rem;
+      overflow-y: scroll;
+}
+
+#section-first
+{
+      width: 67.5rem;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.373);
+      backdrop-filter: blur(50px)
+}
+
+
+#isla
+{
+      border-radius: 1px 0.8rem 1px 0.8rem;
+      height: 2.2rem;
+      width: max-content;
+
+}
+
+a
+{
+      color: aliceblue;
+      /* border: #9D51FF; */
+
+
+}
+a:hover
+{
+      color: #9D51FF;
+   
+}
+#isla div
+{
+      width: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-top: 0.2rem;
+      padding-bottom: 0.2rem;
+
+      border-radius: 1px 0.8rem 1px 0.8rem;     
+      margin: 0 auto;
+}
+
+#isla div:hover
+{
+      border: 1px solid #9D51FF;    
+      border-radius: 1px 0.8rem 1px 0.8rem;     
+}
+
+
+#section-inicio
+{
+      margin-top: 5rem; 
+      padding: 0;
+}
+
+
+#article
+{
+      width: 40rem;
+      margin-top: 2rem;
+      /* background-color: #9D51FF; */
+
+}
+
+#div-img
+{
+      border-radius: 3rem;
+      width: 50rem;
+      height: 30rem;
+      padding: 0;
+      box-shadow: 1px 1px 2px #9D51FF;
+}
+
+#section-inicio-2
+{
+      margin-top: 1rem; 
+      padding: 0;
+}
+
+#div-img-dia
+{
+      margin-top: 6rem;
+      border-radius: 3rem;
+      width: 30rem;
+      height: 20rem;
+      padding: 0;
+      
+}
+#article-2
+{
+      width: 40rem;
+}
+
+#reserva
+{
+      background: #A966FF;
+      padding: 0.5rem;
+      width: 7rem;
+      border-radius: 10rem;
+      margin: 0 auto;
+      color: rgb(255, 255, 255);
+}
+
+#reserva a
+{
+      color: #ffffff;
+      font-weight: bold;
+}
+
+#reserva:hover
+{
+      width: 7.7rem;
+}
+
+
+/* Tours */
+
+#tours
+{
+      margin-top: 5rem;
+      width: 20rem;
+      
+}
+
+#div-img-tours
+{
+      
+      border-radius: 1.5rem;
+      width: 20rem;
+      height: 15rem;
+      padding: 0;
+}
+
+#precios-tours
+{
+      display: flex;
+}
+
+#dic-detalles-tours
+{
+      background-color: black;
+      padding: 0.5rem;
+      width: 6rem;
+      text-align: center;
+      border-radius: 2rem;
+}
+
+#dic-detalles-tours a
+{
+      color: white;
+      font-weight: bold;
+}
+
+
+
+
+
+
+/* Blog Styles */
+
+#bloger
+{
+      margin-top: 10rem;
+}
+
+#blog
+{
+            margin-bottom: 2rem;
+}
+
+#img-blog
+{
+      width: 30rem;
+      height: 20rem;
+      border-radius: 2rem;
+}
+
+#titulo-blog
+{
+      display: flex;
+      width: 20rem;
+}
+
+#parrafo-blog
+{
+      width: 25rem;
+      max-height: 15rem;
+      overflow-y: scroll;
+
+      margin-top: 2rem;
 }

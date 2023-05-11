@@ -40,7 +40,8 @@ def login_registrar(request):
 
 
 def index(request):
-    return render(request, 'app/index.html')
+    box_tours = Box_tours.objects.all()
+    return render(request, 'app/index.html', {'box_tours': box_tours})
 
 @login_required
 def inicio(request):

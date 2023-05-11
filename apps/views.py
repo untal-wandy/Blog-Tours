@@ -30,15 +30,15 @@ def index(request):
 
 
         mensaje = MIMEText("""Este es el mensaje
-        de las narices""")
+        de las narices creado por Wandy Olivares""")
         mensaje['From']= settings.EMAIL_HOST
-        mensaje['To']= 'olivares.wan@gmail.com'
+        mensaje['To']= 'wnady.olivares@gmail.com'
         mensaje['Subject']="Tienes un correo"
 
         # Envio del mensaje
         mailServer.sendmail(settings.EMAIL_HOST,
                         "olivares.wan@gmail.com",
-                        mensaje.as_string())g
+                        mensaje.as_string())
         print('Correo enviado')
 
         # send = send_mail (
