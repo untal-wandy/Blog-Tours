@@ -2,13 +2,26 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
+# Modelo para agregar imagenes de bienveinida en el inicio (header)
+class WellcomeStart(models.Model):
+      name_img = models.CharField(max_length=100)
+      photo_welcome = models.ImageField(upload_to="", blank=True, null=True)
+      photo_welcome_uno = models.ImageField(upload_to="", blank=True, null=True)
+      photo_welcome_dos = models.ImageField(upload_to="", blank=True, null=True)
+      photo_welcome_tres = models.ImageField(upload_to="", blank=True, null=True)
+
+      
+      
+      
+      def __str__(self) -> str:
+            return self.name_img    
 
 
-
+# Modelo extendido de user
 class User(AbstractUser):
       paypal = models.CharField(max_length=100, blank=True)
       transferencia = models.CharField(max_length=100, blank=True)
-      g = models.CharField(max_length=100, blank=True)
+      instagram = models.CharField(max_length=100, blank=True)
       facebook = models.CharField(max_length=100, blank=True)
       gmail = models.CharField(max_length=100, blank=True)
       photo = models.ImageField(upload_to="", blank=True, null=True)

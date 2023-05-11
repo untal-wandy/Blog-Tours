@@ -40,8 +40,12 @@ def login_registrar(request):
 
 
 def index(request):
+    wellcomestart = WellcomeStart.objects.all()
     box_tours = Box_tours.objects.all()
-    return render(request, 'app/index.html', {'box_tours': box_tours})
+    return render(request, 'app/index.html',
+    {
+        'wellcomestart': wellcomestart,
+        'box_tours': box_tours  })
 
 @login_required
 def inicio(request):
@@ -54,7 +58,6 @@ def login(request):
 
 
 
-
 @login_required
 def get_tours(request, paquete):
         
@@ -63,6 +66,8 @@ def get_tours(request, paquete):
     user_get_paquet = User.objects.get(id=request.user.id)
     tours = Box_tours.objects.filter(id=paquete) 
     save = User.objects.get(id=request.user.id)
+
+    
     print('no for')
     if request.method == 'POST':
         print('if post request')

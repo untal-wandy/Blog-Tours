@@ -20,6 +20,7 @@
 
 
 
+
 *
 {
       padding: 0;
@@ -38,8 +39,15 @@
       /* background-color: aqua  ; */
       padding: 0;
       height: 40rem;
+      /* border-radius: ; */
       overflow-y: scroll;
+      scroll-behavior: smooth;
+      
 }
+
+::-webkit-scrollbar {
+      width: 1px;
+    }
 
 #section-first
 {
@@ -86,6 +94,9 @@ a:hover
 {
       border: 1px solid #9D51FF;    
       border-radius: 1px 0.8rem 1px 0.8rem;     
+      transition-delay: 0.5s;
+      transition: 0.7s;
+      font-style: italic;
 }
 
 
@@ -110,7 +121,7 @@ a:hover
       width: 50rem;
       height: 30rem;
       padding: 0;
-      box-shadow: 1px 1px 2px #9D51FF;
+      /* box-shadow: 1px 1px 2px #9D51FF; */
 }
 
 #section-inicio-2
@@ -231,3 +242,98 @@ a:hover
 
       margin-top: 2rem;
 }
+
+
+
+
+/* Perfil */
+
+#btn-perfil
+{
+      background-color: #000000;
+      right: -38rem;
+      
+      border-radius: 1px 0.8rem 1px 0.8rem;   
+      position: absolute;  
+}
+
+#btn-perfil-1
+{
+      /* background-color: #A966FF; */
+      width: 11rem;
+      height: 2.5rem;
+      transition: 1s;
+
+}
+
+#div-perfil
+{
+      background-color: #000000;
+      margin-top: 5rem;
+      border-radius: 1px 0.8rem 1px 0.8rem;   
+
+}
+
+
+#btn-perfil-1:hover
+{
+      width: 10.5rem;
+      transition-delay: 1s;
+      transition: 1s;
+     
+}
+
+
+
+/* Login */
+
+#login
+{
+      justify-content: center;
+      display: flex;
+      flex-wrap: wrap;
+      width: 20rem;
+}
+
+#login input 
+{
+      border-radius: 0.6rem;
+      border: 1px solid #9f9f9f;
+      outline: none;
+      padding: 0.4rem;
+      margin: 0.1rem auto;
+      width: 20rem;
+      text-align: center;
+}
+
+#btn-entrar
+{
+      border-radius: 0.9rem;
+      padding: 0.4rem 0.9rem;
+      background-color: #3184FF;
+      width: 6rem;
+}
+
+#btn-entrar:hover
+{
+      transition: 1s;
+      transition-delay: 0.3s;
+      background-color: #6dff38;
+      width: 5rem;
+      
+}
+
+
+#main
+{
+      display: flex     ;
+}
+
+#img-boy
+{
+      margin-top: 5rem;
+      width: 40rem;
+      border-radius: 2rem;
+      height: 30rem;
+}
+

@@ -32,8 +32,9 @@
           <img src="{% static 'app/img/cuadrado.png' %}"   height='200px'  width='300px' alt="">
         </div>
           {% comment %} first section   {% endcomment %}
-            <section class=' position-absolute shadow ' id='section-first'>
+            <section class=' position-absolute  ' id='section-first'>
                 <div class='bg-black  m-auto d-flex  text-center p-1' id='isla'> 
+                  
                   <div>
                     <a class='text-decoration-none  ' href="{% url 'app:faq' %}">FAQ</a>
                   </div>
@@ -56,9 +57,7 @@
                             <li>
                               <a class="text-decoration-none " href='{% url 'app:perfil' %}'>Cuenta</a>
                             </li>
-                            <li>
-                              <a class="text-decoration-none  text-danger" href='{% url 'app:perfil' %}'>Registrate</a>
-                            </li>
+                          
                             
                          
                         
@@ -85,9 +84,67 @@
                     </p>
                   </article>
 
-                  <div class='overflow-hidden  d-flex' id='div-img'>
-                    <img src="{% static 'app/img/R.jpeg' %}"  >
-                  </div>
+             
+                  {% for photo in wellcomestart %}
+                  <div class=' bg-transparent pt-2  position-relative ' id='div-img' >
+                    <div class='container text-center position-absolute' id='carousel-img'>
+                      <div id="carouselExampleControls" class="carousel slide carousel-fade "   data-bs-ride="carousel">
+                        <div class="carousel-inner " >
+                          <div class="carousel-item active ">
+                            {% comment %} <div class='div-img'> {% endcomment %}
+                              <img src="{{photo.photo_welcome.url}}" 
+                                      class="d-block w-100" alt="fsa" 
+                                      style=' width: 26rem; height: 28rem; border-radius: 2rem' >
+                            
+                          </div>
+
+                          {% comment %}  {% endcomment %}
+                          <div class="carousel-item">
+                            {% comment %} <div class='div-img'> {% endcomment %}
+
+                            <img src="{{photo.photo_welcome_uno.url}}" 
+                            class="d-block  w-100  " 
+                            style=' width: 26rem; height: 28rem; border-radius: 2rem'>
+                            </div> 
+                          </div>
+
+                          {% comment %}  {% endcomment %}
+                          <div class="carousel-item">
+                            {% comment %} <div class='div-img'> {% endcomment %}
+
+                            <img src="{{photo.photo_welcome_dos.url}}" 
+                            class="d-block w-100  " 
+                            style=' width: 26rem; height: 28rem; border-radius: 2rem'>
+                            </div> 
+                          </div>
+
+                          {% comment %}  {% endcomment %}
+                          <div class="carousel-item">
+                            {% comment %} <div class='overflow-hidden  d-flex' id='div-img'> {% endcomment %}
+                              <img src="{{photo.photo_welcome_tres.url}}" 
+                              class="d-block w-100  "
+                              style=' width: 26rem; height: 28rem; border-radius: 2rem'>
+                            </div> 
+                            
+                          </div>
+
+
+                          {% comment %}  {% endcomment %}
+                        </div>
+                        {% comment %} <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button> {% endcomment %}
+                      </div>
+                      </div>
+                      <div>
+                      </div>
+                    </div>
+              {% endfor %}
             </section>
 {% comment %} Seccion wellcome {% endcomment %}
             </section>

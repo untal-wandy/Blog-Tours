@@ -35,19 +35,18 @@
           <img src="{% static 'app/img/cuadrado.png' %}"   height='200px'  width='300px' alt="">
         </div>
           {% comment %} first section   {% endcomment %}
-            <section class=' position-absolute   w-75 ' id='section-first'>
+            <section class=' position-absolute  position-relative  w-75 ' id='section-first'>
        
 
-                  
-
-              <div class="btn-group mt-2 rounded-3 position-absolute end-0  w-25">
+                
+              <div class="btn-group      " id='btn-perfil-1'>
             
-                <button type="button" class=" bg-transparent rounded-3  w-100 p-1  border-0 text-black dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <button type="button" class="w-100 p-1  border-0 text-white dropdown-toggle" id='btn-perfil' data-bs-toggle="dropdown" aria-expanded="false">
                   Ajustes
                 </button>
-                <div class='dropdown-menu p-1 text-black bg-gradient bg-black border-0 mt-2 text-center '>
+                <div class='dropdown-menu  text-black mt-1 ms-4   text-center ' id='div-perfil'>
                   
-                  <li>
+                  <li >
                     <a  class='text-decoration-none' href="{% url 'app:tours' %}">Tours</a>
                   </li> 
                   <li>
