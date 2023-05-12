@@ -112,25 +112,22 @@
                           <div class="carousel-item">
                             {% comment %} <div class='div-img'> {% endcomment %}
 
-                            <img src="{{photo.photo_welcome_dos.url}}" 
-                            class="d-block w-100  " 
-                            style=' width: 26rem; height: 28rem; border-radius: 2rem'>
-                            </div> 
-                          </div>
-
-                          {% comment %}  {% endcomment %}
-                          <div class="carousel-item">
-                            {% comment %} <div class='overflow-hidden  d-flex' id='div-img'> {% endcomment %}
-                              <img src="{{photo.photo_welcome_tres.url}}" 
-                              class="d-block w-100  "
+                              <img src="{{photo.photo_welcome_dos.url}}" 
+                              class="d-block w-100  " 
                               style=' width: 26rem; height: 28rem; border-radius: 2rem'>
                             </div> 
-                            
                           </div>
 
-
-                          {% comment %}  {% endcomment %}
-                        </div>
+                            {% comment %}  {% endcomment %}
+                            <div class="carousel-item">
+                              {% comment %} <div class='overflow-hidden  d-flex' id='div-img'> {% endcomment %}
+                                <img src="{{photo.photo_welcome_tres.url}}" 
+                                class="d-block w-100  "
+                                style=' width: 26rem; height: 28rem; border-radius: 2rem'>
+                              </div> 
+                            
+                          </div>
+                          </div>
                         {% comment %} <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Previous</span>
@@ -151,55 +148,58 @@
     </section>
 
     {% comment %} La del mes {% endcomment %}
+{% for tours_random in filter_tours_random %}
     <section class=''>
       <section class=' container d-flex  ' id='section-inicio-2'>
-        
-        <div class='overflow-hidden  d-flex' id='div-img-dia'>
-          <img src="{% static 'app/img/as.jpg' %}"  >
-        </div>
-        <article class='p-2 text-center ' id='article-2'>
-          <h3 class='mt-5'>Reserva ahora tu proxima aventura</h3>
-          <p class='mt-3'>
-            Ya no esperes mas estamos aqui con las mejores ofertas  del mercado, tu nueva aventura!. 
-          </p>
-          
-          <div class='' id='reserva'>
-            <a href="#" class='text-decoration-none' >Reservar</a>
-          </div>
-          <hr class='w-25 container'>
-        </article>
-      </section>
-    </section>
+                          <div class='overflow-hidden  d-flex' id='div-img-dia'>
+                            <img src="{{tours_random.photo.url}}"  >
+                          </div>
+                          <article class='p-2 text-center ' id='article-2'>
+                            <h3 class='mt-5'>{{ tours_random.name_tour }}</h3>
+                            <p class=''>${{ tours_random.price }}</p>
+
+                            <p class='mt-3'>
+                              {{ tours_random.description }} 
+                            </p>
+                            
+                            <div class='' id='reserva'>
+                              <a href="{% url 'app:get_tours' tours_random.id %}" class='text-decoration-none' >Detalles</a>
+                            </div>
+                            <hr class='w-25 container'>
+                        </article>
+                      </section>
+                    </section>
+{% endfor %}
     <hr class='w-75 container mt-5'>
 
 
 
-    <section class='d-flex flex-wrap container mt-5' id='' >
+    {% comment %} <section class='d-flex flex-wrap container mt-5' id='' > {% endcomment %}
 
-    {% for tour in box_tours %}
+    {% comment %} {% for tour in box_tours %} {% endcomment %}
     
     {% comment %} Tours {% endcomment %}
-                          <div class=' p-0 m-1 position-relative' id='tours'>
+                          {% comment %} <div class=' p-0 m-1 position-relative' id='tours'> {% endcomment %}
 
     {% comment %} img {% endcomment %}
-                            <div class='overflow-hidden  d-flex' id='div-img-tours'>
-                                <img src="{{tour.photo.url}}"  >
-                              </div>
+                            {% comment %} <div class='overflow-hidden  d-flex' id='div-img-tours'> {% endcomment %}
+                                {% comment %} <img src="{{tour.photo.url}}"  > {% endcomment %}
+                              {% comment %} </div> {% endcomment %}
 
     {% comment %} Nombre y precios {% endcomment %}
-                              <div class=' position-relative m-2' id='precios-tours'>
-                                <h6>{{ tour.name_tour}}</h6>
-                                <p class='position-absolute end-0'>${{ tour.price }}</p>
-                              </div>
+                              {% comment %} <div class=' position-relative m-2' id='precios-tours'> {% endcomment %}
+                                {% comment %} <h6>{{ tour.name_tour}}</h6> {% endcomment %}
+                                {% comment %} <p class='position-absolute end-0'>${{ tour.price }}</p> {% endcomment %}
+                              {% comment %} </div> {% endcomment %}
 
     {% comment %} Detalles {% endcomment %}
-                              <div class='position-absolute end-0' id='dic-detalles-tours'>
-                                <a href="{% url 'app:get_tours' tour.id %}" class='text-decoration-none'>Detalles</a>
-                              </div>
-                            </div>
+                              {% comment %} <div class='position-absolute end-0' id='dic-detalles-tours'> {% endcomment %}
+                                {% comment %} <a href="{% url 'app:get_tours' tour.id %}" class='text-decoration-none'>Detalles</a> {% endcomment %}
+                              {% comment %} </div> {% endcomment %}
+                            {% comment %} </div> {% endcomment %}
 
-      {% endfor %}
-    </section>
+      {% comment %} {% endfor %} {% endcomment %}
+    {% comment %} </section> {% endcomment %}
 
     <!-- Optional JavaScript; choose one of the two! -->
 

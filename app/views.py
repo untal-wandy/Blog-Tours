@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import  logout
 from django.contrib.auth.models import User
 from .models import *
-
+import random
 
 def login_registrar(request):
 
@@ -42,10 +42,21 @@ def login_registrar(request):
 def index(request):
     wellcomestart = WellcomeStart.objects.all()
     box_tours = Box_tours.objects.all()
+    randon_tours = Box_tours.objects.all()
+
+    randon_tours = random.randint(0, randon_tours.count())
+
+    filter_tours_random = Box_tours.objects.all()
+    for tou in filter_tours_random:
+            print(tou.name_tour,'Aquisition') 
+    
     return render(request, 'app/index.html',
     {
         'wellcomestart': wellcomestart,
-        'box_tours': box_tours  })
+        'box_tours': box_tours,
+        'filter_tours_random': filter_tours_random  })
+
+
 
 @login_required
 def inicio(request):
@@ -60,9 +71,9 @@ def login(request):
 
 @login_required
 def get_tours(request, paquete):
-        
-        
     box_tours = Box_tours.objects.filter(id=paquete)
+    for box in box_tours:
+        print(box.name_tour)
     user_get_paquet = User.objects.get(id=request.user.id)
     tours = Box_tours.objects.filter(id=paquete) 
     save = User.objects.get(id=request.user.id)
