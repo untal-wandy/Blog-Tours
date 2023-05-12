@@ -113,6 +113,7 @@ def get_tours(request, paquete):
                         get_paquet = save.tour_user_model_set.create(name=tour.name_tour, number_id_tour=paquete)
                         messeje_get_buy = 'Adquerido su Tour', tour.name_tour
                         print(messeje_get_buy)
+                        
     return render(request, 'app/get_tours.html',  {'box_tours': box_tours})
 
 

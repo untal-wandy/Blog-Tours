@@ -7,7 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Laila&display=swap" rel="stylesheet">
-
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,19 +17,18 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <main id='main'>
-      
+
     {% comment %}  img with blur section {% endcomment %}
     <section class='container position-relative' id='section-img-blur'>
 
       {% comment %} circulo {% endcomment %}
       <div>
-        <img src="{% static 'app/img/circulo.png' %}"    height='300px'     width='300px' alt="">
+        <img src="{% static 'app/img/circulo.png' %}"  style='margin-top: 15rem'   height='300px'     width='300px' alt="">
       </div>
 
       {% comment %} triangulo {% endcomment %}
       <div>
-          <img src="{% static 'app/img/triangulo.png' %}"  height='300px' width='300px' alt="">
+          <img src="{% static 'app/img/triangulo.png' %}" style='margin-top: 5rem'  height='300px' width='300px' alt="">
         </div>
 
         {% comment %} cuadrado {% endcomment %}
@@ -40,68 +38,149 @@
 
           {% comment %} first section   {% endcomment %}
             <section class=' position-absolute  ' id='section-first'>
-              {% comment %}  {% endcomment %}
                 <div class='bg-black  m-auto d-flex  text-center p-1' id='isla'> 
-                  <div>
-                    <a class='text-decoration-none  ' href="{% url 'app:index' %}">Inicio</a>
-                  </div>
+                  {% comment %}  {% endcomment %}
                   <div>
                     <a class='text-decoration-none  ' href="{% url 'app:faq' %}">FAQ</a>
                   </div>
+                  {% comment %}  {% endcomment %}
                   <div>
                     <a class='text-decoration-none  ' href="{% url 'app:blog' %}">Blog</a>
                   </div>
+                  {% comment %}  {% endcomment %}
                   <div>
                     <a class='text-decoration-none  ' href="{% url 'app:tours' %}">Tours</a>
                   </div>
 
-                  
-                    {% comment %}  {% endcomment %}
+                  {% comment %}  {% endcomment %}
                     <div class="btn-group me-2">
                       <button type="button" class=" bg-transparent border-0 text-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         Mas
                       </button>
-
-                    {% comment %}  {% endcomment %}
-                      <div class='dropdown-menu  bg-black mt-2 text-center '>
+                      <div class='dropdown-menu  bg-black mt-2 text-center '>       
                             <li>
                               <a class="text-decoration-none " href='{% url 'app:perfil' %}'>Cuenta</a>
-                            </li>
+                            </li>         
                       </div>
                     </div>
                 </div>
 
-                  {% comment %}  {% endcomment %}
-            {% for tour in box_tours %}
-                  <div class='rounded-3  mb-2  p-1 bg-transparent ' id='img-boy' >
-                    <div class='w-100 container text-center'>
-                      <div id="carouselExampleControls" class="carousel slide carousel-fade"  data-bs-ride="carousel">
+
+                <section class=' container d-flex  ' id='section-inicio'>
+                  <article class='p-0 text-center ' id='article'>
+{% comment %}                     
+                    <div class='  text-start'>
+                      <h6 >Ya casi terminas!</h6>
+                    </div> {% endcomment %}
+      {% for photo in box_tours %}
+                    <div class='text-start'>
+                      <h3 class='mt-5'>{{photo.name_tour}} </h3>
+
+                    </div>
+                      
+                    {% comment %}  {% endcomment %}
+                    <div class='bg-white ms-4 shadow p-2 text-start' style='max-width: 27rem; max-height:15rem; border-radius: 1rem;'>
+                      <h6>{{photo.description}}</h6>
+                      
+                    </div>
+                    {% comment %} <h6>Precio del viaje: ${{ photo.price}} </h6> {% endcomment %}
+                    
+                    
+                    <div>
+                    </div>
+                    <div class='container m-aut  mt-5 ' id='login'>
+                      
+                      <div>
+                        <h5>Elija un metodo de  pago</h5>
+                        <button id='paypal' class='bg-primary mt-2 border-0 text-white' 
+                        style='width:6rem; height: 2.5rem; border-radius: 1.1rem'><strong>Paypal</strong></button>
+                        
+                        <button id='transferencia' class='bg-black border-0 tex t-white' 
+                        style='width:9rem; height: 2.5rem; border-radius: 1.1rem'><strong>Transferencia</strong></button>
+                      </div>
+                      
+                      <div class='' id='div_paypal'>
+                                  {% comment %} <input class='' required placeholder='Nombre y Apellido' type="text" name="first_name"> {% endcomment %}
+                            <input class='' required placeholder='Correo electronico' type="email" name="email" >
+                            {% comment %} <label for="asientos"> </label> {% endcomment %}
+                            <input class='' required placeholder=' Asientos disponibles: {{ photo.asientos}}' type="asientos" name="email" >
+                            
+                      {% comment %}  {% endcomment %}
+                      <button type='submit' class='  border-0 text-white mt-3' id='btn-entrar'>
+                        <strong>Vamos!</strong>
+                      </button>
+                      </div>
+
+
+                      {% comment %} 
+                        Transferencia
+                      {% endcomment %}
+                <div class='d-none' id='div_transferencia'>
+                        {% comment %} <input class='' required placeholder='Nombre y Apellido' type="text" name="first_name"> {% endcomment %}
+                  <input class='' required placeholder='Numero de cuenta' type="text" name="email" >
+                  <input type="file" name="" id="">
+                  {% comment %} <label for="asientos"> </label> {% endcomment %}
+                  <input class='' required placeholder=' Asientos disponibles: {{ photo.asientos}}' type="asientos" name="email" >
+                  
+            {% comment %}  {% endcomment %}
+            <button type='submit' class='  border-0 text-white mt-3' id='btn-entrar'>
+              <strong>Vamos!</strong>
+            </button>
+            </div>
+                    </div>
+                  </article>
+          {% endfor %}
+                  
+             
+                  {% for photo in box_tours %}
+                  <div class=' bg-transparent   position-relative ' id='div-img'  >
+                    <div class='container d-flex text-center position-absolute' id='carousel-img'>
+                      <div id="carouselExampleControls" class="carousel slide carousel-fade "   data-bs-ride="carousel">
+                
                         <div class="carousel-inner " >
-                          <div class="carousel-item active">
-                             <img src="{{tour.photo.url}}" class="d-block w-100  rounded-3" alt="...">
+                          <div class="carousel-item active ">
+                            {% comment %} <div class='div-img'> {% endcomment %}
+                              <img src="{{photo.photo.url}}" 
+                                      class="d-block w-100" alt="fsa" 
+                                      style=' width: 26rem; height: 28rem; border-radius: 2rem' >
+                            
                           </div>
 
                           {% comment %}  {% endcomment %}
                           <div class="carousel-item">
-                            <img src="{{tour.photo1_s.url}}" class="d-block w-100  rounded-3" alt="...">
+                            {% comment %} <div class='div-img'> {% endcomment %}
+
+                            <img src="{{photo.photo1_s.url}}" 
+                            class="d-block  w-100  " 
+                            style=' width: 26rem; height: 28rem; border-radius: 2rem'>
+                            </div> 
                           </div>
 
                           {% comment %}  {% endcomment %}
                           <div class="carousel-item">
-                            <img src="{{tour.photo2_s.url}}" class="d-block w-100  rounded-3" alt="...">
+                            {% comment %} <div class='div-img'> {% endcomment %}
+
+                              <img src="{{photo.photo2_s.url}}" 
+                              class="d-block w-100  " 
+                              style=' width: 26rem; height: 28rem; border-radius: 2rem'>
+                            </div> 
                           </div>
 
-                          {% comment %}  {% endcomment %}
-                          <div class="carousel-item">
-                            <img src="{{tour.photo3_s.url}}" class="d-block w-100  rounded-3" alt="...">
-                          </div>
-
-                          {% comment %}  {% endcomment %}
-                          <div class="carousel-item ">
-                            <img src="{{tour.photo4_s.url}}" class="d-block w-100 rounded-3 "  alt="...">
-                          </div>
-
-                          {% comment %}  {% endcomment %}
+                            {% comment %}  {% endcomment %}
+                            <div class="carousel-item">
+                              {% comment %} <div class='overflow-hidden  d-flex' id='div-img'> {% endcomment %}
+                                <img src="{{photo.photo3_s.url}}" 
+                                class="d-block w-100  "
+                                style=' width: 26rem; height: 28rem; border-radius: 2rem'>
+                              </div> 
+                            
+                              <div class="carousel-item">
+                                {% comment %} <div class='overflow-hidden  d-flex' id='div-img'> {% endcomment %}
+                                  <img src="{{photo.photo4_s.url}}" 
+                                  class="d-block w-100  "
+                                  style=' width: 26rem; height: 28rem; border-radius: 2rem'>
+                                </div> 
+                              </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -110,28 +189,81 @@
                         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Next</span>
-                        </button>
-                      </div>
-                      </div>
-                      <div>
+                        </button> 
                       </div>
                     </div>
-              {% endfor %}
-              
+                    <div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </section>
+{% comment %} Seccion wellcome {% endcomment %}
             </section>
     </section>
 
+    {% comment %} La del mes {% endcomment %}
+{% comment %} {% for tours_random in box_tours %}
+    <section class=''>
+      <section class=' container d-flex  ' id='section-inicio-2'>
+                          <div class='overflow-hidden  d-flex' id='div-img-dia'>
+                            <img src="{{tours_random.photo.url}}"  >
+                          </div>
+                          <article class='p-2 text-center ' id='article-2'>
+                            <h3 class='mt-5'>{{ tours_random.name_tour }}</h3>
+                            <p class=''>${{ tours_random.price }}</p>
+
+                            <p class='mt-3'>
+                              {{ tours_random.description }} 
+                            </p>
+                            
+                            <div class='' id='reserva'>
+                              <a href="{% url 'app:get_tours' tours_random.id %}" class='text-decoration-none' >Detalles</a>
+                            </div>
+                            <hr class='w-25 container'>
+                        </article>
+                      </section>
+                    </section>
+{% endfor %} {% endcomment %}
+    <hr class='w-75 container mt-5'>
+
+
+
+    {% comment %} <section class='d-flex flex-wrap container mt-5' id='' > {% endcomment %}
+
+    {% comment %} {% for tour in box_tours %} {% endcomment %}
+    
+    {% comment %} Tours {% endcomment %}
+                          {% comment %} <div class=' p-0 m-1 position-relative' id='tours'> {% endcomment %}
+
+    {% comment %} img {% endcomment %}
+                            {% comment %} <div class='overflow-hidden  d-flex' id='div-img-tours'> {% endcomment %}
+                                {% comment %} <img src="{{tour.photo.url}}"  > {% endcomment %}
+                              {% comment %} </div> {% endcomment %}
+
+    {% comment %} Nombre y precios {% endcomment %}
+                              {% comment %} <div class=' position-relative m-2' id='precios-tours'> {% endcomment %}
+                                {% comment %} <h6>{{ tour.name_tour}}</h6> {% endcomment %}
+                                {% comment %} <p class='position-absolute end-0'>${{ tour.price }}</p> {% endcomment %}
+                              {% comment %} </div> {% endcomment %}
+
+    {% comment %} Detalles {% endcomment %}
+                              {% comment %} <div class='position-absolute end-0' id='dic-detalles-tours'> {% endcomment %}
+                                {% comment %} <a href="{% url 'app:get_tours' tour.id %}" class='text-decoration-none'>Detalles</a> {% endcomment %}
+                              {% comment %} </div> {% endcomment %}
+                            {% comment %} </div> {% endcomment %}
+
+      {% comment %} {% endfor %} {% endcomment %}
+    {% comment %} </section> {% endcomment %}
 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
+    <script src="{% static 'app/js/script.js' %}"></script>
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
-    </main>
   </body>
 </html>

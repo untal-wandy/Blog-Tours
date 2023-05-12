@@ -54,7 +54,7 @@
       width: 67.5rem;
       height: 100%;
       background-color: rgba(255, 255, 255, 0.373);
-      backdrop-filter: blur(50px)
+      backdrop-filter: blur(5rem)
 }
 
 
@@ -63,6 +63,7 @@
       border-radius: 1px 0.8rem 1px 0.8rem;
       height: 2.2rem;
       width: max-content;
+    
 
 }
 
@@ -152,17 +153,25 @@ a:hover
       border-radius: 10rem;
       margin: 0 auto;
       color: rgb(255, 255, 255);
+      transition-delay: 0.9s;
+      transition: 1s;
+      cursor: context-menu;
 }
 
 #reserva a
 {
       color: #ffffff;
       font-weight: bold;
+      cursor: context-menu;
 }
 
 #reserva:hover
 {
-      width: 7.7rem;
+      width: 8.9rem;
+
+      transition-delay: 0.9s;
+      transition: 1s;
+      margin-top: 1;
 }
 
 
@@ -251,7 +260,7 @@ a:hover
 #btn-perfil
 {
       background-color: #000000;
-      right: -38rem;
+      right: -46rem;
       
       border-radius: 1px 0.8rem 1px 0.8rem;   
       position: absolute;  
@@ -260,8 +269,8 @@ a:hover
 #btn-perfil-1
 {
       /* background-color: #A966FF; */
-      width: 11rem;
-      height: 2.5rem;
+      width: 9rem;
+      height: 0rem;
       transition: 1s;
 
 }
