@@ -28,10 +28,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Pypayl Test settings
+PAYPAL_TEST = True
+PAYPAL_BUY_BUTTON_IMAGE = '/media/pay2.png'
 
 # Application definition
 
 INSTALLED_APPS = [
+    'paypal.standard.ipn',
     'apps.apps.AppsConfig',
     'app.apps.AppConfig',
     'django.contrib.admin',

@@ -74,59 +74,118 @@
                     </div> {% endcomment %}
       {% for photo in box_tours %}
                     <div class='text-start'>
-                      <h3 class='mt-5'>{{photo.name_tour}} </h3>
+                      <h3 class='mt-5'>Nombre: <strong>{{photo.name_tour}}</strong> </h3>
 
                     </div>
                       
                     {% comment %}  {% endcomment %}
-                    <div class='bg-white ms-4 shadow p-2 text-start' style='max-width: 27rem; max-height:15rem; border-radius: 1rem;'>
-                      <h6>{{photo.description}}</h6>
+                    <div class='bg-white ms-4 border p-2 text-start' style='max-width: 27rem; max-height:15rem; border-radius: 1rem;'>
+                      <h6>Descripcion: {{photo.description}}</h6>
                       
+                    </div>
+
+                    <h3 class='text-start mt-3 ' >Detalles</h3>
+                    <div class='text-start bg-body  pt-3 pb-3 border container ' style='max-width: 27rem; max-height:15rem; border-radius: 1rem;'>
+                      <h6>Precio:$ <strong>{{photo.price}}</strong></h6>
+                      <h6>Cupos: <strong>{{photo.asientos}}</strong></h6>
+                      <h6>Fecha inicial: <strong>{{photo.dia}}</strong></h6>
+                      <h6>Fecha del viaje: <strong>{{photo.limites}}</strong></h6>
                     </div>
                     {% comment %} <h6>Precio del viaje: ${{ photo.price}} </h6> {% endcomment %}
                     
                     
                     <div>
                     </div>
-                    <div class='container m-aut  mt-5 ' id='login'>
+                    
+                    
+                    <div class='container   mt-5  ' id='login'>
                       
                       <div>
-                        <h5>Elija un metodo de  pago</h5>
-                        <button id='paypal' class='bg-primary mt-2 border-0 text-white' 
-                        style='width:6rem; height: 2.5rem; border-radius: 1.1rem'><strong>Paypal</strong></button>
+                        <h4  > </h4>
                         
-                        <button id='transferencia' class='bg-black border-0 tex t-white' 
-                        style='width:9rem; height: 2.5rem; border-radius: 1.1rem'><strong>Transferencia</strong></button>
-                      </div>
+                        
+                        {% comment %} <input class='' required placeholder='Nombre y Apellido' type="text" name="first_name"> {% endcomment %}
+                        {% comment %} <input class='' required placeholder='Correo electronico' type="email" name="email" > {% endcomment %}
+                        {% comment %} <label for="asientos"> </label> {% endcomment %}
+                        <div class='mb-1 mt-4 ' id='eleccion'>
+                          <button class='bg-black text-white' style='width:6rem; height: 2.4rem; border-radius: 1.1rem'><strong>Reservar</strong>
+                          </button>
+
+                          {% comment %}  {% endcomment %}
+                                  <button class='bg-primary bg-gradient border-0 text-white p-2' 
+                                  style='width:6rem; height: 2.4rem; border-radius: 1.1rem' id='btn_get'><strong>Comprar</strong>
+                                </button>
+                                </div>
+                                      {% comment %} <input class='' required placeholder=' Asientos disponibles: {{ photo.asientos}}' type="asientos" name="email" > {% endcomment %}
+                                                      
+{% comment %}                                     
+                              <button type='submit' class='  border-0 text-white mt-3' id='btn-entrar'>
+                                <strong>Vamos!</strong>
+                              </button> {% endcomment %}
+                            </div>
+                      {% comment %}
+                        
+                                                    //Elecion de asientos y descuentos
                       
-                      <div class='' id='div_paypal'>
-                                  {% comment %} <input class='' required placeholder='Nombre y Apellido' type="text" name="first_name"> {% endcomment %}
-                            <input class='' required placeholder='Correo electronico' type="email" name="email" >
-                            {% comment %} <label for="asientos"> </label> {% endcomment %}
-                            <input class='' required placeholder=' Asientos disponibles: {{ photo.asientos}}' type="asientos" name="email" >
-                            
-                      {% comment %}  {% endcomment %}
-                      <button type='submit' class='  border-0 text-white mt-3' id='btn-entrar'>
-                        <strong>Vamos!</strong>
-                      </button>
-                      </div>
+                       {% endcomment %}
+
+                      
+                      {% comment %}
+                        
+                                                      //Btn de pagos
+                      
+                       {% endcomment %}
+                                <div id='div_pagos'>
+                                  
+                                  {% comment %}  {% endcomment %}
+                                  {% comment %} <button id='paypal' class=' mt-2 border-0 text-white' 
+                                  style='width:6rem; height: 2.5rem; border-radius: 1.1rem'><strong>Paypal</strong></button>
+                                  {% endcomment %}
+                                  {% comment %}  {% endcomment %}
+                                  {% comment %} <button id='transferencia' class='bg-black border-0 text-white' 
+                                  style='width:9rem; height: 2.5rem; border-radius: 1.1rem'><strong>Transferencia</strong></button>
+                                </div> {% endcomment %}
+                                
+                                <h5>Clic en el botton Paypal</h5>
+                                <div class='mt-1 d-block ' id='div_paypal' style='max-height: 3px;'>
+                                  {{form.render}}
+                                            {% comment %} <input class='' required placeholder='Nombre y Apellido' type="text" name="first_name"> {% endcomment %}
+                                      {% comment %} <input class='' required placeholder='Correo electronico' type="email" name="email" > {% endcomment %}
+                                        {% comment %} <label for="asientos"> </label> {% endcomment %}
+                                      {% comment %} <input class='' required placeholder=' Asientos disponibles: {{ photo.asientos}}' type="asientos" name="email" > {% endcomment %}
+                                      {% comment %} <form action="" method="post"> {% endcomment %}
+{% comment %} {% csrf_token %} {% endcomment %}
+
+                                        {% comment %} <button type='submit' class='  border-0 text-white mt-3' id='btn-entrar'>
+                                          <strong>Vamos!</strong>
+                                        </button>
+                                         {% endcomment %}
+                                        {% comment %}  {% endcomment %}
+                                      {% comment %} </form> {% endcomment %}
+                                </div>
 
 
                       {% comment %} 
-                        Transferencia
+
+
+                                            Transferencia
+                      
+                      
                       {% endcomment %}
-                <div class='d-none' id='div_transferencia'>
-                        {% comment %} <input class='' required placeholder='Nombre y Apellido' type="text" name="first_name"> {% endcomment %}
-                  <input class='' required placeholder='Numero de cuenta' type="text" name="email" >
-                  <input type="file" name="" id="">
-                  {% comment %} <label for="asientos"> </label> {% endcomment %}
-                  <input class='' required placeholder=' Asientos disponibles: {{ photo.asientos}}' type="asientos" name="email" >
-                  
-            {% comment %}  {% endcomment %}
-            <button type='submit' class='  border-0 text-white mt-3' id='btn-entrar'>
-              <strong>Vamos!</strong>
-            </button>
-            </div>
+                                <div class='mt-1' id='div_transferencia'>
+
+                                        {% comment %} <input class='' required placeholder='Nombre y Apellido' type="text" name="first_name"> {% endcomment %}
+                                  <input class='' required placeholder='Numero de cuenta' type="text" name="email" >
+                                  <input type="file" name="" id="">
+
+                                  {% comment %} <label for="asientos"> </label> {% endcomment %}
+                                  <input class='' required placeholder=' Asientos disponibles: {{ photo.asientos}}' type="asientos" name="email" >
+                                  
+                            {% comment %}  {% endcomment %}
+                            <button type='submit' class='  border-0 text-white mt-3' id='btn-entrar'>
+                              <strong>Vamos!</strong>
+                            </button>
+                            </div>
                     </div>
                   </article>
           {% endfor %}
@@ -142,7 +201,7 @@
                             {% comment %} <div class='div-img'> {% endcomment %}
                               <img src="{{photo.photo.url}}" 
                                       class="d-block w-100" alt="fsa" 
-                                      style=' width: 26rem; height: 28rem; border-radius: 2rem' >
+                                      style=' width: 26rem; height: 28rem; border-radius: 2rem ' >
                             
                           </div>
 

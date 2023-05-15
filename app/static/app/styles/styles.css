@@ -168,7 +168,6 @@ a:hover
 #reserva:hover
 {
       width: 8.9rem;
-
       transition-delay: 0.9s;
       transition: 1s;
       margin-top: 1;
@@ -308,6 +307,7 @@ a:hover
 {
       border-radius: 0.6rem;
       border: 1px solid #9f9f9f;
+      /* max-height: 5.4rem; */
       outline: none;
       padding: 0.4rem;
       margin: 0.1rem auto;
@@ -346,3 +346,11 @@ a:hover
       height: 30rem;
 }
 
+
+#div_paypal input
+{
+      max-height: 3.5rem;
+      border-radius: 3rem;
+      border: 0;
+      max-width: 8rem;
+}
