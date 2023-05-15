@@ -1,9 +1,19 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import  logout
-from django.contrib.auth.models import User
-from .models import *
 import random
+import uuid
+from asyncio import format_helpers
+
+from django import forms
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.shortcuts import redirect, render
+from paypal.standard.forms import PayPalPaymentsForm
+
+from .models import *
+
+
+
+   
 
 def login_registrar(request):
 
@@ -78,6 +88,27 @@ def get_tours(request, paquete):
     tours = Box_tours.objects.filter(id=paquete) 
     save = User.objects.get(id=request.user.id)
 
+    PAYPAL_RECEIVER_EMAIL  = 'sb-easix25999816@business.example.com'
+g    price =12
+
+    paypal_dict = {
+        "business": PAYPAL_RECEIVER_EMAIL,
+        "amount": price ,
+        "item_name": "El sol del la mirada",
+        "invoice": str(uuid.uuid4()),
+        "currency_code": "USD",
+        "notify_url": "" ,
+        "return": '' ,
+        "cancel_return": "",
+        # "": PAYPAL_BUY_BUTTON_IMAGE,
+        "custom": "premium_plan",  # Custom command to correlate to some function later (optional)
+    }
+
+    # Create the instance.
+    form = PayPalPaymentsForm(initial=paypal_dict)
+    
+
+        
     
     print('no for')
     if request.method == 'POST':
@@ -90,6 +121,7 @@ def get_tours(request, paquete):
                 delete_a_asientos = Box_tours.objects.filter(id=paquete)
                 for asientos in delete_a_asientos:
                     number_asientos =  asientos.asientos
+                    price = asientos.price
                     print(number_asientos)
 
                 if number_asientos <= 0:
@@ -98,7 +130,7 @@ def get_tours(request, paquete):
                         asientos.save()
                 else:
                     for asientos in delete_a_asientos:
-                     asientos.asientos = number_asientos -listo
+                     asientos.asientos = number_asientos - listo
                     asientos.save()
                         # else:
                         #      print('es igual a 0')
@@ -114,7 +146,9 @@ def get_tours(request, paquete):
                         messeje_get_buy = 'Adquerido su Tour', tour.name_tour
                         print(messeje_get_buy)
                         
-    return render(request, 'app/get_tours.html',  {'box_tours': box_tours})
+    return render(request, 'app/get_tours.html',  
+                  {'box_tours': box_tours,
+                   "form": form})
 
 
 
